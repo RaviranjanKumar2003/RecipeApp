@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="./output.css">
+    <link rel="stylesheet" href="./index.css">
+    <title>Recipe App</title>
+</head>
+<body class="font-sans bg-[#fff] text-[#fff] ">
+    <header class="bg-[#f3f4f6] flex justify-center flex-col items-center">
+        <nav class="w-full bg-[rgb(12,27,44)] h-[70px] flex justify-between items-center z-50 fixed top-0 left-0 shadow-md">
+            <div class="part1 flex ml-8">
+              <h1 class="text-2xl font-bold tracking-wide uppercase text-[#f97316]">Khana Khajana</h1>
+            </div>
+            <div class="part2 text-lg flex gap-8">
+              <div class="home  cursor-pointer   flex justify-center items-center rounded-md  font-semibold hover:text-[#f97316] transition-colors duration-300">
+                  <a href="./index.html">Home</a>
+              </div>
+              <div class="menu active cursor-pointer  flex justify-center items-center rounded-md hover:text-[#f97316] transition-colors duration-300 font-semibold">
+                  <a href="./menu.html">Menu</a>
+              </div>
+              <div class="home cursor-pointer   flex justify-center items-center rounded-md hover:text-[#f97316] transition-colors duration-300 font-semibold">
+                  <a href="./card.html">Card</a>
+              </div>
+              <div class="contact  cursor-pointer   flex justify-center items-center rounded-md hover:text-[#f97316] transition-colors duration-300 font-semibold">
+                  <a href="./testimonials.html">Testimonials</a>
+              </div>
+              <div class="contact  cursor-pointer   flex justify-center items-center rounded-md hover:text-[#f97316] transition-colors duration-300 font-semibold">
+                  <a href="#">Contact us</a>
+              </div>
+            </div>
+            <div class="part3 flex">
+               <a href="./login.html" class="exitLogin border-2 text-lg flex justify-center items-center border-orange-500 text-orange-500 px-4 py-2 h-[40px] mt-1.5 rounded-lg hover:bg-orange-500 hover:text-white transition duration-300 transform hover:scale-105">Login</a>
+               <div class="profile flex  ml-8 mr-8">
+                  <div class="loginImg img h-[50px] w-[50px] bg-black rounded-full flex justify-center items-center text-xl cursor-pointer">
+                     <img src="./img/user.png" class="h-[50px] w-[50px] rounded-full">
+                  </div>
+                  <div class="name ml-4 mt-2 font-semibold text-lg">
+                      <h2 class="profileName">User</h2>
+                  </div>
+                  <div class="smallPro h-[50px] w-[50px] bg-black rounded-full hidden">
+
+                  </div>
+               </div>
+           </div>
+           <div class="sidebar text-white mt-2 text-2xl hidden" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </div>
+        </nav>
+        <div class="mobileMenu bg-white hidden">
+              <div class="home  cursor-pointer   flex justify-center items-center rounded-md  font-semibold hover:text-[#f97316] transition-colors duration-300">
+                  <a href="./index.html">Home</a>
+              </div>
+              <div class="home active cursor-pointer  flex justify-center items-center rounded-md hover:text-[#f97316] transition-colors duration-300 font-semibold">
+                  <a href="./menu.html">Menu</a>
+              </div>
+              <div class="home cursor-pointer   flex justify-center items-center rounded-md hover:text-[#f97316] transition-colors duration-300 font-semibold">
+                  <a href="./card.html">Card</a>
+              </div>
+              <div class="home  cursor-pointer   flex justify-center items-center rounded-md hover:text-[#f97316] transition-colors duration-300 font-semibold">
+                  <a href="./testimonials.html">Testimonials</a>
+              </div>
+              <div class="home  cursor-pointer   flex justify-center items-center rounded-md hover:text-[#f97316] transition-colors duration-300 font-semibold">
+                  <a href="./contact.html">Contact us</a>
+              </div>
+        </div>
+        <!-- HERO -->
+        <div class="heroContainer w-[85vw] h-[450px] bg-[#f3f4f6] mt-[70px]">
+            <div class="heroHeding w-full bg-[#fff] h-[150px] mt-5 flex flex-col text-left justify-center pl-8">
+               <h1 class="text-5xl font-bold font-sans tracking-wide text-orange-500">Menu Explorer</h1>
+               <p class="mt-3 text-lg text-gray-600">Savor the Essence of India</p>
+            </div>
+            <div class="heroNave text-black w-full mt-5">
+                <ul class="flex gap-5">
+                    <li class="active2 px-6 py-2 text-lg font-medium "><a href="#">All items</a></li>
+                    <li class=" px-6 py-2 text-lg font-medium "><a href="#">Starter</a></li>
+                    <li class=" px-6 py-2 text-lg font-medium "><a href="#">Main Course</a></li>
+                    <li class=" px-6 py-2 text-lg font-medium "><a href="#">Breads</a></li>
+                    <li class=" px-6 py-2 text-lg font-medium "><a href="#">Rice & Biryani</a></li>
+                    <li class=" px-6 py-2 text-lg font-medium "><a href="#">Desserts</a></li>
+                    <li class=" px-6 py-2 text-lg font-medium "><a href="#">Cold Drinks</a></li>
+                </ul>
+                <hr class="mt-2 border-t border-gray-400">
+            </div>
+            <div class="filter text-black mt-8">
+                <span class="text-lg font-medium text-gray-800">Filter: </span>
+                <button class="px-4 ml-4 py-2 rounded-md font-semibold transition-all bg-orange-300 text-orange-800">All</button>
+                <button class="px-4 ml-4 py-2 rounded-md font-semibold transition-all bg-gray-200 text-gray-800">Vege</button>
+                <button class="px-4 ml-4 py-2 rounded-md font-semibold transition-all bg-gray-200 text-gray-800">Non-Vege</button>
+            </div>
+        </div>
+        <div class="recipeContainer mt-[-140px] w-[90vw]">
+               
+        </div>
+        <!-- BOTTOM -->
+        <div class="bottomContainer h-[350px] w-full bg-[#f97316] mt-15 ">
+            <div class="bottomTop  flex justify-center p-15 gap-10">
+                <div class="about w-[25%] text-left">
+                   <h2 class="text-xl font-semibold">About Us</h2>
+                   <p class="text-[#e5e7eb] text-sm mt-5">We are committed to delivering the best food experience, offering a variety of dishes made from the freshest ingredients.</p>
+                </div>
+                <div class="about w-[20%]">
+                    <h2 class="text-xl font-semibold">Quick Links</h2>
+                    <ul class="text-[#e5e7eb] text-sm mt-5">
+                      <li><a href="#">Home</a> </li>
+                      <li class="mt-2"><a href="#">Menu</a></li>
+                      <li class="mt-2"><a href="#">Top Dishes</a></li>
+                      <li class="mt-2"><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="about w-[20%]">
+                   <h2 class="text-xl font-semibold">Contact Us</h2>
+                   <ul class="text-[#e5e7eb] text-sm mt-5">
+                      <li class="mt-2">Patna,Bihar</li>
+                      <li class="mt-2">+91 9264XXXXXX</li>
+                      <li class="mt-2">support@eatzy.com</li>
+                    </ul>
+                </div>
+                <div class="about w-[20%]">
+                    <h2 class="text-xl font-semibold">Follow Us</h2>
+                    <div class="mt-2 text-2xl">
+                       <span class="cursor-pointer hover:text-black transition-colors duration-300"> <i class="fa-brands fa-facebook-f"></i></span>
+                       <span class="ml-5 cursor-pointer hover:text-black transition-colors duration-300"><i class="fa-brands fa-instagram"></i></span>
+                       <span class="ml-5 cursor-pointer hover:text-black transition-colors duration-300"><i class="fa-brands fa-twitter"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="bottomBottom  border-t-1 border-t-black flex justify-center">
+                <span class="mt-5 text-[#e5e7eb] text-sm">© 2025 Design with ❤️ by 😎 | EAt-zy - [Food Management System]. All Rights Reserved.</span>
+            </div>
+        </div>
+    </header>
+</body>
+<script src="./app.js"></script>
+</html>

@@ -1,0 +1,244 @@
+.active {
+    color: #f97316;
+    border-bottom: 5px solid #f97316;
+}
+
+.active2{
+    transition: all 0.3s;
+    border-bottom: 2px solid #f97316; /* Tailwind's orange-400 */
+    color: #f97316;
+}
+
+.recipe {
+  background-color: white;
+  color: #000;
+  border-radius: 0.75rem; 
+  padding: 1.5rem; 
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column; 
+  align-items: center;
+  border: 1px solid #e5e7eb; 
+  transition: all 0.3s ease; 
+  animation: fadeInUp 0.5s ease-in-out; 
+}
+
+
+
+.recipe:hover {
+  border-color: #f97316; 
+  transform: scale(1.01); 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.recipe img{
+    border-radius: 10px;
+    width: 300px;
+    height: 200px
+}
+
+
+
+/* index.css */
+@media (min-width: 768px) {
+  .recipe {
+    flex-direction: row; 
+  }
+
+  .recipe {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .price {
+    align-items: flex-end;
+    justify-content: center;
+    margin-left: auto;
+    margin-top: 0;
+  }
+
+}
+@media (max-width: 767px) {
+  .img {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .name h1, .name h3 {
+    margin-left: 0;
+  }
+
+  .price {
+    align-items: center;
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .recipe img {
+    width: 100%;
+    height: auto;
+  }
+
+  .recipe {
+    padding: 1rem;
+  }
+
+}
+
+
+
+@media (max-width: 425px) {
+  .part2,  
+  .part3 {
+    display: none;
+  }
+
+  .sidebar {
+    display: block;
+    margin-right: 10px;
+  }
+
+  .heroContainer {
+    flex-direction: column;
+    height: auto;
+    margin-top: 90px;
+  }
+
+  .heroCard {
+    flex-direction: column-reverse; /* Moves heroRight above heroleft */
+    height: auto;
+    width: 90%;
+    margin-left: 0;
+    margin-right: 20px;
+    padding: 1rem;
+  }
+
+  .heroleft,
+  .heroRight {
+    width: 100%;
+    text-align: center;
+    margin-left: 0;
+    padding: 1rem 0;
+  }
+
+  .heroRight img {
+    height: auto;
+    width: 70%;
+    margin: auto;
+  }
+
+  .bottomContainer{
+    height: auto;
+  }
+
+  .bottomTop {
+    flex-direction: column;
+    width: 100%;
+    padding: 15px;
+  }
+  .about{
+    width: 100%;
+  }
+  .bottomBottom{
+    text-align: center;
+  }
+
+  .mobileMenu{
+    margin-top: 100px;
+    height: 100px;
+    width: 100%;
+    background: #fff;
+    color: #000;
+  }
+  .home{
+    margin-top: 10px;
+    margin-left: -100px;
+  }
+
+
+  .heroNave ul{
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding-right: 0.5rem;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-left: 1rem;
+  }
+
+  .filter {
+    margin-left: -25px;
+    margin-top: 10px;
+    padding-left: 0.75rem;
+  }
+
+  .filter button {
+    margin-left: 8px;
+  }
+  
+
+
+  .recipeContainer{
+    margin-top: 5px;
+  }
+
+  
+  .cardDiv{
+    height: 200px;
+    width: 200px;
+  }
+  .cardDiv img{
+    height: 120px;
+  }
+
+  .sayH1{
+    font-size: 2rem;
+    text-align: center;
+  }
+  .testheroCard{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+  }
+  .heroTitle {
+    font-size: 1.5rem;
+  }
+  .sayHeading {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 20px;
+  }
+
+  .leftCard{
+    width: 90%;
+  }
+  .rightCard{
+    width: 90%;
+  }
+
+  .logHero{
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+
+
+
+
+
+
+

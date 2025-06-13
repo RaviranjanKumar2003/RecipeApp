@@ -44,8 +44,11 @@ function loginFun() {
     if (userEmail === savedEmail && userPassword === savedPassword) {
         alert("Login successful!");
         localStorage.setItem('isLoggedIn', 'true');
-        window.open("./index.html");
-        window.remove("./logIn.html");
+        setTimeout(() => {
+            window.location.href = "./index.html";
+        }, 1000);
+        // window.open("./index.html");
+        // window.remove("./logIn.html");
         // window.location.href = "/index.html";
 
 

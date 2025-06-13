@@ -88,13 +88,13 @@ function toggleMenu() {
 
 
 const hideCard=document.querySelector('.hideCard');
-const child2=document.querySelector('.child2');
+const main=document.querySelector('.main');
 const CardheroContainer=document.querySelector('.CardheroContainer');
 const recipesDetails = document.querySelector('.recipeContainer');
 let recipes = [];
 
 async function getAllmeals() {
-    recipesDetails.innerHTML = `<h1 class="mt-6 text-2xl">Loading....</h1>`;
+    recipesDetails.innerHTML = `<h1 class="text-black text-center mt-6 text-2xl">Loading....</h1>`;
     try {
         const response = await fetch('https://dummyjson.com/recipes');
         const data = await response.json();
@@ -153,59 +153,122 @@ getAllmeals();
 
 function renderCart() {
     const cardPart1 = document.querySelector('.cardPart1');
-    // Get cart from localStorage (or empty array if none)
+    const cardPart2 = document.querySelector('.cardPart2');
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    child2.innerHTML = ''; // Clear any previous items
-    if (cart.length === 0) {
-        hideCard.classList.add('hidden'); // Hide cart section
-        // CardheroContainer.classList.remove('hidden');
-        CardheroContainer.innerHTML=`
-         <div class="child2 flex flex-col text-center">
-               <div class=" cardDiv h-[250px] w-[250px] flex justify-center items-center rounded-full bg-[#f9be53]">
-                   <img src="./img/card.svg" class="h-[160px]">
-                    <!-- <img src="./img/sad-face.png" class="z-200"> -->
-               </div>
-               <h1 class="text-center text-gray-600 text-lg sm:text-xl font-semibold mt-4">Your cart is empty.</h1>
-               <a href="./menu.html" class="mt-6 bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg shadow-md transition duration-300">Explore the Menu</a>
-           </div>
-        `;
-    }
-    else{
-      CardheroContainer.classList.add('hidden');
-    }
-    
+    // Reset
+    cardPart1.innerHTML = `<h1 class="text-2xl text-black m-5 font-semibold">Your Card</h1>`;
+    cardPart2.innerHTML = `<h2 class="text-lg font-semibold text-gray-700 mb-4">PRICE DETAILS</h2>`;
 
     if (cart.length === 0) {
-        cardPart1.innerHTML = `<p>Your cart is empty.</p>`;
+        hideCard.classList.add('hidden');
+        CardheroContainer.classList.remove('hidden');
         return;
+    } else {
+        hideCard.classList.remove('hidden');
+        CardheroContainer.classList.add('hidden');
     }
 
-    // For each item in cart, create a div and add to cardPart1
-    cart.forEach(item => {
+    let totalMRP = 0;
+    let totalDiscount = 0;
+    let platformFee = 3;
+    let totalItems = 0;
+
+    cart.forEach((item, index) => {
+        const quantity = item.quantity || 1;
+        totalItems += quantity;
+
+        const originalPrice = item.caloriesPerServing / 0.65;
+        const discount = originalPrice - item.caloriesPerServing;
+
+        totalMRP += originalPrice * quantity;
+        totalDiscount += discount * quantity;
+
         const div = document.createElement('div');
-        div.className = 'cardItems text-black flex gap-3 mb-3 ';
+        div.className = 'cardItems text-black flex gap-3 mb-3';
 
         div.innerHTML = `
-            <img src="${item.image}" alt="${item.name}" class=" object-cover rounded"/>
+            <img src="${item.image}" alt="${item.name}" class="object-cover rounded w-24 h-24"/>
             <div class="flex flex-col">
-               <span class="text-xl font-semibold">${item.name}</span>
-               <span class="text-sm text-gray-500 mt-2">Size: XL</span>
-               <span class="text-sm text-gray-500 mt-2">Seller: maniaclife</span>
-               <h1 class="text-orange-500 text-xl font-bold mt-2">₹${item.caloriesPerServing}</h1>
-               <div class="flex gap-5 mt-5">
-                  <div class="w-8 h-8 flex items-center justify-center bg-gray-200 rounded-full text-xl cursor-pointer">-</div>
-                  <div class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded-md">1</div>
-                  <div class="w-8 h-8 flex items-center justify-center bg-gray-200 rounded-full text-xl cursor-pointer">+</div>
-                  <button onclick="removeFromCart()" class="text-blue-600 font-medium ml-4 cursor-pointer">Remove</button>
-               </div>
+                <span class="text-xl font-semibold">${item.name}</span>
+                <span class="text-sm text-gray-500 mt-2">Size: XL</span>
+                <span class="text-sm text-gray-500 mt-2">Seller: maniaclife</span>
+                <h1 class="text-black text-xl font-bold mt-2">₹${item.caloriesPerServing} 
+                    <del class="ml-3 text-sm text-[#625e5e]">₹${originalPrice.toFixed(2)}</del>
+                    <span class="ml-3 text-sm text-green-600">65% Off</span>
+                </h1>
+                <div class="flex gap-5 mt-5">
+                    <div class="decrease w-8 h-8 flex items-center justify-center bg-gray-200 rounded-full text-xl cursor-pointer">-</div>
+                    <div class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded-md">${quantity}</div>
+                    <div class="increase w-8 h-8 flex items-center justify-center bg-gray-200 rounded-full text-xl cursor-pointer">+</div>
+                    <button onclick="removeFromCart(${index})" class="text-blue-600 font-medium ml-4 cursor-pointer">Remove</button>
+                </div>
             </div>
-            
         `;
 
         cardPart1.appendChild(div);
+
+        const increaseBtn = div.querySelector('.increase');
+        const decreaseBtn = div.querySelector('.decrease');
+        const removeBtn = div.querySelector('.remove');
+
+        increaseBtn.addEventListener('click', () => {
+           cart[index].quantity += 1;
+           localStorage.setItem('cart', JSON.stringify(cart));
+           renderCart();
+        });
+
+       decreaseBtn.addEventListener('click', () => {
+           if (cart[index].quantity > 1) {
+               cart[index].quantity -= 1;
+            } else {
+               cart.splice(index, 1);
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+        });
+
+
     });
+
+    const totalAmount = totalMRP - totalDiscount + platformFee;
+
+    const summary = document.createElement('div');
+    summary.innerHTML = `
+      <div class="flex justify-between text-[#000]">
+        <span>Price (${totalItems} item${totalItems > 1 ? 's' : ''})</span>
+        <span>₹${totalMRP.toFixed(2)}</span>
+      </div>
+      <div class="flex justify-between mt-3 text-[#000]">
+        <span>Discount</span>
+        <span class="text-green-600">-₹${totalDiscount.toFixed(2)}</span>
+      </div>
+      <div class="flex justify-between mt-3 text-[#000]">
+        <span>Platform Fee</span>
+        <span>₹${platformFee}</span>
+      </div>
+      <div class="flex justify-between mt-3 text-[#000]">
+        <span>Delivery Charges</span>
+        <span class="text-green-600">FREE</span>
+      </div>
+      <hr class="mt-3 text-[#9d9999]"/>
+      <div class="flex justify-between mt-3 font-bold text-lg text-[#000]">
+        <span>Total</span>
+        <span>₹${totalAmount.toFixed(2)}</span>
+      </div>
+      <button class="cursor-pointer w-full mt-6 bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition duration-300">PLACE ORDER</button>
+      <div class="mt-4 text-gray-500 text-sm flex items-center gap-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2zm0 2c-1.104 0-2 .896-2 2v3h4v-3c0-1.104-.896-2-2-2zm9-5h-3v2h3v-2zm0 4h-3v2h3v-2zm0 4h-3v2h3v-2zM3 8h3v2H3V8zm0 4h3v2H3v-2zm0 4h3v2H3v-2z"></path>
+        </svg>
+        Safe and Secure Payments. Easy returns. 100% Authentic products.
+      </div>
+    `;
+
+    cardPart2.appendChild(summary);
 }
+
 
 window.onload = function() {
     renderCart();

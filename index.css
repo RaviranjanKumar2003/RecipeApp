@@ -236,22 +236,31 @@
 }
 
 
+
+
+
 .cardItems{
   margin: 20px;
   height: 200px;
-  width: 500px;
-  border-bottom: 1px solid black;
+  width:90%;
+  border-bottom: 1px solid rgb(150, 145, 145);
 }
 .cardItems img{
   height: 200px;
   width: 200px;
   padding-bottom: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+            0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+}
+.cardItems img:hover{
+  transform: scale(1.03); 
 }
 
 
 
 @media (max-width: 425px) {
-  .main{
+  /* .main{
     width: 100vw;
     height: 120vh;
     display: flex;
@@ -268,10 +277,12 @@
   }
   .cardPart2{
     width: 90%;
-  }
+  }  */
   .cardItems{
     width: 80%;
+    height: 100%;
     padding-left: 10px;
+    padding-bottom: 20px;
     flex-direction: column;
   }
   .cardItems img{

@@ -11,6 +11,9 @@
 <body class="font-sans bg-[#fff] text-[#fff] ">
     <header>
         <nav class="w-full bg-[rgb(12,27,44)] h-[70px] flex justify-between items-center z-50 fixed top-0 left-0 shadow-md">
+            <div class="sidebar text-white  text-2xl hidden" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars-staggered"></i>
+           </div>
             <div class="part1 flex ml-8">
               <h1 class="text-2xl font-bold tracking-wide uppercase text-[#f97316]">Khana Khajana</h1>
             </div>
@@ -42,9 +45,11 @@
                   </div>
                </div>
            </div>
-           <div class="sidebar text-white mt-2 text-2xl hidden" onclick="toggleMenu()">
-                <i class="fa-solid fa-bars-staggered"></i>
-            </div>
+           <div class="smallProfile hidden text-xl  text-black " onclick="toggleProfile()">
+              <div class="w-[50px] h-[50px] bg-[#fff] flex justify-center items-center rounded-full">
+                <i class="fa-regular fa-user"></i>
+              </div>
+           </div>
         </nav>
         <div class="mobileMenu hidden">
               <div class="home active cursor-pointer   flex justify-center items-center rounded-md  font-semibold hover:text-[#f97316] transition-colors duration-300">
@@ -62,6 +67,19 @@
               <div class="home  cursor-pointer   flex justify-center items-center rounded-md hover:text-[#f97316] transition-colors duration-300 font-semibold">
                   <a href="./contact.html">Contact us</a>
               </div>
+        </div>
+        <div class="profileMenu hidden">
+           <div class="flex flex-col justify-center items-center gap-5">
+               <a href="./login.html" class="exitLogin2  border-2 text-lg flex justify-center items-center border-orange-500 text-orange-500 px-4 py-2 h-[40px] mt-1.5 rounded-lg hover:bg-orange-500 hover:text-white transition duration-300 transform hover:scale-105">Login</a>
+               <div class="profile flex  ml-8 mr-8">
+                  <div class="loginImg2 img h-[50px] w-[50px] bg-black rounded-full flex justify-center items-center text-xl cursor-pointer">
+                     <img src="./img/user.png" class=" h-[50px] w-[50px] rounded-full">
+                  </div>
+                  <div class="name ml-4 mt-2 font-semibold text-lg">
+                      <h2 class="profileName2 text-black">User</h2>
+                  </div>
+               </div>
+           </div>
         </div>
         <!-- HERO -->
         <div class="heroContainer w-full h-[450px] bg-[#f3f4f6] flex items-end justify-center mt-[70px]">

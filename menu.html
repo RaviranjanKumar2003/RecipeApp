@@ -12,6 +12,9 @@
 <body class="font-sans bg-[#fff] text-[#fff] ">
     <header class="bg-[#f3f4f6] flex justify-center flex-col items-center">
         <nav class="w-full bg-[rgb(12,27,44)] h-[70px] flex justify-between items-center z-50 fixed top-0 left-0 shadow-md">
+            <div class="sidebar text-white mt-2 text-2xl hidden" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </div>
             <div class="part1 flex ml-8">
               <h1 class="text-2xl font-bold tracking-wide uppercase text-[#f97316]">Khana Khajana</h1>
             </div>
@@ -46,9 +49,9 @@
                   </div>
                </div>
            </div>
-           <div class="sidebar text-white mt-2 text-2xl hidden" onclick="toggleMenu()">
-                <i class="fa-solid fa-bars-staggered"></i>
-            </div>
+           <div class="smallProfile p-3 rounded-full bg-[#fff] text-black flex justify-center items-center hidden">
+              <i class="fa-regular fa-user"></i>
+           </div>
         </nav>
         <div class="mobileMenu bg-white hidden">
               <div class="home  cursor-pointer   flex justify-center items-center rounded-md  font-semibold hover:text-[#f97316] transition-colors duration-300">

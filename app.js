@@ -60,13 +60,19 @@ window.addEventListener('DOMContentLoaded', () => {
     const name = localStorage.getItem('registeredUserName');
     const img=localStorage.getItem('registerUserImg');
     const profileName = document.querySelector('.profileName');
+    const profileName2 = document.querySelector('.profileName2');
     const exitLogin = document.querySelector('.exitLogin');
+    const exitLogin2 = document.querySelector('.exitLogin2');
     const loginImg=document.querySelector('.loginImg');
+    const loginImg2=document.querySelector('.loginImg2');
 
     if (isLoggedIn === 'true' && name && img && profileName && exitLogin) {
         profileName.textContent = name;
+        profileName2.textContent = name;
         exitLogin.innerHTML = "Logout";
+        exitLogin2.innerHTML = "Logout";
         loginImg.innerHTML = `<img src="${img}" alt="User Image" class="h-full w-full rounded-full " />`;
+        loginImg2.innerHTML = `<img src="${img}" alt="User Image" class="h-full w-full rounded-full " />`;
 
        
     }
@@ -83,7 +89,15 @@ function logoutUser() {
 
 function toggleMenu() {
     const menu = document.querySelector('.mobileMenu');
+    const profileMenu = document.querySelector('.profileMenu');
     menu.classList.toggle('hidden');
+    profileMenu.classList.add('hidden');
+}
+function toggleProfile() {
+    const profileMenu = document.querySelector('.profileMenu');
+    const menu = document.querySelector('.mobileMenu');
+    profileMenu.classList.toggle('hidden');
+    menu.classList.add('hidden');
 }
 
 
